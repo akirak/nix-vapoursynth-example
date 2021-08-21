@@ -1,9 +1,16 @@
-{ symlinkJoin, ffms }:
-symlinkJoin {
-  name = "vapoursynth-plugins";
-  version = "0";
-  preferLocalBuild = true;
-  paths = [
+{ runCommandNoCC, ffms, vapoursynth-eedi3 }:
+runCommandNoCC "vapoursynth-plugins"
+{
+  propagatedBuildInputs = [
     ffms
+    vapoursynth-eedi3
   ];
-}
+} ''
+  mkdir -p $out
+
+  for d in ${ffms} ${vapoursynth-eedi3}; do
+      for f in $d/lib/vapoursynth/*; do
+          ln -s -t $out $f
+      done
+  done
+''

@@ -5,7 +5,7 @@ let
   configFile = writeTextFile {
     name = "vapoursynth-config-file";
     text = ''
-      UserPluginDir=${plugins}/lib/vapoursynth
+      SystemPluginDir=${plugins}
     '';
   };
 in

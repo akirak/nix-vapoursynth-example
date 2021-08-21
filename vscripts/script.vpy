@@ -11,6 +11,7 @@ video = core.ffms2.Source(source=filename)
 # video = core.ffms2.Source(source='xxxxx.mkv')
 
 # You can apply functions and filters
+video = core.eedi3m.EEDI3(video, 2)
 
 # video = core.std.Transpose(video)
 
